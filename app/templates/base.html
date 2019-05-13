@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      {% if title %}
+      <title>{{ title }} - Microblog</title>
+      {% else %}
+      <title>Welcome to Microblog</title>
+      {% endif %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+</head>
+<body>
+<section class="hero is-info is-fullheight">
+
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-end">
+                            <p class="navbar-item"> Microblog: </p>
+                            <a href="{{ url_for('index') }}" class="navbar-item">Home</a>
+                            {% if current_user.is_anonymous %}
+                            <a href="{{ url_for('login') }}" class="navbar-item">Login</a>
+                            <a href="{{ url_for('register') }}" class="navbar-item">Click to Register!</a>
+                            {% else %}
+                            <a href="{{ url_for('logout') }}" class="navbar-item">Logout</a>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <hr>
+
+     <div class="hero-body">
+            <div class="container has-text-centered">
+
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </section>
+</body>
+</html>

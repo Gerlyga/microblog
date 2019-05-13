@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    <h1  class="title">Register</h1>
+    <div class="box">
+        <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            <input class="input is-large"  name="username" placeholder="Username" autofocus="">
+            <!--{{ form.username.label }}<br>-->
+            <!--{{ form.username(size=32) }}<br>-->
+            {% for error in form.username.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            <input class="input is-large"  name="email" placeholder="Email" >
+            <!--{{ form.email.label }}<br>-->
+            <!--{{ form.email(size=32) }}<br>-->
+            {% for error in form.email.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+             <input class="input is-large"   name="password" placeholder="Password"  >
+            <!--{{ form.password.label }}<br>-->
+            <!--{{ form.password(size=32) }}<br>-->
+            {% for error in form.password.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+             <input class="input is-large"   name="password2" placeholder="Repeat Password"  >
+            <!--{{ form.password2.label }}<br>-->
+            <!--{{ form.password2(size=32) }}<br>-->
+            {% for error in form.password2.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+            <button class="button is-block is-info is-large is-fullwidth">Register</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

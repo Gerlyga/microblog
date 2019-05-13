@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    <h1 class="title">Sign In</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    <div class="box">
+        <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            <input class="input is-large"  name="username" placeholder="Username" autofocus="">
+            <!--{{ form.username.label }}<br>-->
+            <!--{{ form.username(size=32) }}<br>-->
+            {% for error in form.username.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            <input class="input is-large"   name="password" placeholder="Password"  >
+            <!--{{ form.password.label }}<br>-->
+            <!--{{ form.password(size=32) }}<br>-->
+            {% for error in form.password.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+
+            <div class="field">
+                <label class="checkbox">
+                    <input type="checkbox">
+                    Remember me
+                </label>
+            </div>
+            </p>
+        <button class="button is-block is-info is-large is-fullwidth"> Login </button>
+            <!--<p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>-->
+        </form>
+
+    </div>
+</div>
+{% endblock %}
