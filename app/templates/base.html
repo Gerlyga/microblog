@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,20 +8,29 @@
       {% else %}
       <title>Welcome to Microblog</title>
       {% endif %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"  />
+
 </head>
 <body>
 <section class="hero is-info is-fullheight">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <span class="navbar-burger burger" data-target="navbarMenuHeroC">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroB" class="navbar-menu">
+          <div class="navbar-end">
 
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
+                            <a href="{{ url_for('index') }}" class="navbar-item is-active">Home</a>
 
-                    <div id="navbarMenuHeroA" class="navbar-menu">
-                        <div class="navbar-end">
-                            <p class="navbar-item"> Microblog: </p>
-                            <a href="{{ url_for('index') }}" class="navbar-item">Home</a>
                             {% if current_user.is_anonymous %}
+
                             <a href="{{ url_for('login') }}" class="navbar-item">Login</a>
                             <a href="{{ url_for('register') }}" class="navbar-item">Click to Register!</a>
                             {% else %}
@@ -28,13 +38,12 @@
                             <a href="{{ url_for('logout') }}" class="navbar-item">Logout</a>
 
                             {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <hr>
 
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
      <div class="hero-body">
             <div class="container has-text-centered">
 
@@ -43,6 +52,7 @@
                 {% endblock %}
             </div>
         </div>
-    </section>
+
+</section>
 </body>
 </html>
